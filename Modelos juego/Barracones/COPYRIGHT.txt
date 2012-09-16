@@ -1,0 +1,18 @@
+All texture files are published under the terms of the GNU GPL.
+Here you can find sources of the files - or most of them (we'll probably forget to
+add newly added files here. mail boson-devel@lists.sourceforge.net if a file is
+missing here).
+Some files were under a less restrictive license (meaning: it allows
+re-licensing) or even under the public domain. They got relicensed by us. Feel
+free to use either the original license or the GPL. If the files were modified
+by us you *have* to use GPL (or mail us:)).
+Some files are from golgotha - which was developed by crack.com, but never
+finished and then released to the public domain. You can find the original files
+here: http://jonathanclark.com/golgotha/browse.html
+They were *really* released as public domain - meaning you can do just
+everything with it - relicense, sell, use, ...
+UPDATE: you can't find the sources for every file anymore, because I had to
+rename them from golgotha-filenames (which i've used) to the filenames our
+artist uses. its way too much work for me to keep track of the actual content
+and source of these files. please contact our artist or
+boson-devel@lists.sourceforge.net for the actual source of the files.

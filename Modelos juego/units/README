@@ -1,0 +1,431 @@
+Ok this is work in progress so a lot of things might and probably will change
+(or have already changed when you read this).
+Nevertheless here the description of the themes/species/*/units directory (where
+"*" is currently "human" only).
+
+All units in boson are derived from the "Unit" class and therefore they all
+share one common directory - facilities as well as mobile units.
+All files which belong to a unit of this species belong to its directory in
+themes/species/*/units/unit_dir - unit_dir is the unique directory of the unit.
+It doesn't matter how you name this directory - however a prefix like mob_ and
+fix_ might be useful when working on the units. But this depends on you.
+
+Currently a unit must have at least 2 overview bitmaps (overview-big.png and
+overview-small.png) which are shown when the unit is selected (big) and as a
+button in the construction facility (small).
+The big overview must have a size of 100x100
+The small overview must have a size of 50x50
+Optionally, units may have overview pixmap for manual (overview-manual.png, size
+is 320x240).
+A unit has a model file. Currently we are using .3ds files (3D Studio Max file
+format). This file is simply called "unit.3ds". If we support another file
+format in the future only the suffix will change.
+The textures of this unit model are a little bit special. They are not in the
+unit directory - not even in the species directory. You can find them in
+themes/textures/ for *all* species and *all* units.
+We do this to be able to share the textures between all units/models. If you use
+textures that are already used by other units boson will use less memory (on
+runtime!) and might run faster (texture memory is limited).
+
+Shots and explosions are implemented using particles now.
+See ../particles/REAMDE for a description.
+
+Additionally all units have index.unit file in their directories. This file
+describes the unit - if you are familar with KConfig syntax you'll know how to
+edit them.
+
+There is also a bounit program which is able to edit these files with a GUI. It
+should support most of options (excluding OpenGL frames).
+
+The rest of this file is about the index.unit.
+It has first a common group shared by all units:
+"[Boson Unit]" (without the quotation marks). This group can contain the
+following entries:
+
+The entries marked with * are mandatory.
+-------------------------------------------------------------------------------
+[Boson Unit]
+IsFacility=boolean
+        True if this is a facility, false if this is a mobile unit.
+        Default is false.
+* Name=Text
+        The Name of the unit. Should be short, no more than 2 or 3
+        words. One if possible.
+        Default is "Unknown".
+* Id=Number
+        A unique (!) ID for this unit. Must be > 0.
+        No default!
+UnitWidth=Number
+        The width of the unit in cells.
+        You can use floating point numbers - e.g. 1.5 will make
+        the unit occupy 1.5 cells.
+        Please don't use values like 1.3333 (might cause rounding
+        trouble) or 1.23876381687 (nonsense value).
+        Default is 1.0
+UnitHeight=Number
+        The height of the unit in cells.
+        You can use floating point numbers - e.g. 1.5 will make
+        the unit occupy 1.5 cells.
+        Please don't use values like 1.3333 (might cause rounding
+        trouble) or 1.23876381687 (nonsense value).
+        Default is 1.0
+UnitDepth=Number
+        The height in z-direction of the unit in cells.
+        You can use floating point numbers - e.g. 1.5 will make
+        the unit occupy 1.5 cells.
+        Please don't use values like 1.3333 (might cause rounding
+        trouble) or 1.23876381687 (nonsense value).
+        Default is 1.0
+Health=Number
+        Health, power, whatever. Make this greater and the unit will
+        live longer.
+        Must be > 0. Default is 100.
+Shield=Number
+        Not yet supported.
+        Default is 0.
+Armor=Number
+        Not yet supported.
+        Default is 0.
+MineralCost=Number
+        How much mineral do you have to pay if you build this?
+        Must be >= 0. Default is 100.
+OilCost=Number
+        How much oil do you have to pay if you build this?
+        Must be >= 0. Default is 0.
+SightRange=Number
+        The sight range of this unit.
+        the sight range is how far (in cells!) this unit can see.
+        Must be >= 0. Default is 5 (currently).
+TerrainType=Number
+        The default terrain type of the unit. One of 0 (Land),
+        1 (Water) or 2 (Air).
+        You must decide for one - even if the unit is some kind
+        of mixture. If so you will probably use Land (0).
+        Must be 0, 1 or 2. The default is 0 (=Land Unit)
+ProductionTime=Number
+        The number of advance calls needed to produce this unit
+        Must be >= 0. Default is (currently) 100.
+Producer=Number
+        Specifies which kind of factory is able to produce this
+        unit. Possible values are: 0=war factory (heavy land
+        units, all types of vehicles), 1=shipyard (all ships),
+        2=airport (all aircrafts), 3=barracks (soldiers,
+        human units), 10=command bunker (all facilities).
+        Please note that there is currently only a single factory
+        for every Producer type, but we might add more one day
+        (e.g. a mobile factory). The possible productions of those
+        factories will also depend on the Producer type.
+        The default is the value of "TerrainType" for mobile units
+        and 10 (= command bunker) for facilities.
+SupportMiniMap=bool
+        If true then this player has a minimap when he has a unit
+        of this type. The minimap disappears when all units of the
+        player which have SupportMiniMap=true are gone.
+        Default is false.
+Requirements=List
+        List is comma separated list of unit IDs. Player must have
+        built all those units before he can build this unit.
+        Default is an empty list.
+ExplodingDamage=Number
+        How much damage is applied to nearby units when this unit explodes (is
+        destroyed)
+        Default is 0
+ExplodingDamageRange=Number
+        In how big radius nearby units will be damaged when this unit explodes.
+        Default is 0
+HitPoint=Vector
+        Defines "hitpoint" of this unit. Hitpoint is used for shooting, all
+        units will shoot at this point when attacking this unit. It should be
+        point on the unit's surface.
+        Vector consists of 3 floating-point numbers, separated by commas, e.g.
+        1.2,0.6,-0.3 and is relative to the center of the unit.
+        Default is 0,0,0 (center of the unit).
+DestroyedParticles=List
+        Comma separated list of particle systems which will be created when this
+        unit is destroyed. You can create e.g. smoke and explosion with this.
+        Default is an empty list.
+ConstructedParticles=List
+        Comma separated list of particle systems which will be created when this
+        unit is constructed. You can create e.g. light smoke for factory
+        chimneys with it.
+        Default is an empty list.
+Weapons=Number
+        How many weapons this unit has.
+        See below for more information about weapons.
+        Default is 0.
+-------------------------------------------------------------------------------
+
+
+
+You should provide as many entries as possible although you don't have to.
+
+Also note that all entries support (as of KConfig) the possibility to create
+localized versions. You can e.g. use "Name[de]=German Name" or so. Use this
+feature where it is useful. I doubt this is useful for something like Id ;-)
+(Ahem - "I doubt" means: don't do it under any circumstances!!)
+
+Beside this general group there is one group for facilities only ("[Boson
+Facility]") and one for mobile units ("[Boson Mobile Unit]"). Both are not
+mandatory.
+These groups contain all mobile unit/facility specific stuff (like the
+speed for a unit).
+
+-------------------------------------------------------------------------------
+[Boson Mobile Unit]
+Speed=Number
+        Value of the speed of the unit. A unit will move that many
+        pixels per advance call. This is a double number so values
+        like "0.452463" are possible as well.
+        Must be >= 0. Default is 0
+CanGoOnLand=boolean
+        Whether this unit can go over land.
+        This is true by default for TerrainType = Land or
+        Aircraft.
+CanGoOnWater=boolean
+        Whether this unit can go over water.
+        This is true by default for TerrainType = Water or
+        Aircraft.
+-------------------------------------------------------------------------------
+
+-------------------------------------------------------------------------------
+[Boson Facility]
+ConstructionSteps=Number
+        Time the facility takes to be built. This is more or
+        less the number of frames displayed in the 
+        construction animation.
+        Default is 20
+-------------------------------------------------------------------------------
+
+
+
+Another group shared by all units (it is *not* mandatory) is the textures
+group. Since .3ds files seem to allow filenames of 8+3 length only we are
+mapping those "short names" to "real names" here. If a texture doesn't have an
+entry here it will use the "short name".
+
+-------------------------------------------------------------------------------
+[Textures]
+Textures=List
+        List of textures. Only the "short name" that should
+        get mapped have to be listed here. All listed files
+        need to have an entry in this group (if it isn't
+        there it is ignored. no error).
+        Defaul is an empty list
+texture.jpg=LongName.jpg
+        "texture.jpg" is the "short name" of the texture,
+        i.e. the name as listed in the model (.3ds) file. It
+        must be listed in the "Textures=" entry (see above).
+        It must be lowercase! (even if it is uppercase in the
+        model file)
+        "LongName.jpg" is the filename that gets used instead
+        of the "short name". Case sensitve (but doesn't
+        matter, since filename in boson should be lowercase
+        anyway).
+-------------------------------------------------------------------------------
+
+
+
+The OpenGL group is also shared by all units and not mandatory, but will
+probably be used by most units. In this group you specify e.g. how many frames
+the model has and how they should be used. Note that counting starts at 0 here!
+so e.g. 5 frames are 0..4 !
+The first frame of an action is specified by "FrameStart*" where "*" is the
+action. See below for possible values here. The number of frames for this action
+is specified by "FrameRange*", where "*" is again the action. You'll also need
+to specify how fast the frames change - this is done by the "advance" calls
+(which depend on the game speed, btw). Specify it by "FrameSpeed*".
+So e.g. to use the first 10 frames when the unit does nothing and to change the
+frame every 5 advance calls use this:
+FrameStartIdle=0
+FrameRangeIdle=10
+FrameSpeedIdle=5
+
+-------------------------------------------------------------------------------
+[OpenGL]
+FrameStartIdle=Number
+        (see above for general information)
+        Default is 0.
+FrameRangeIdle=Number
+        (see above for general information)
+        Default is 1.
+FrameSpeedIdle=Number
+        (see above for general information)
+        Default is 1.
+        The "Idle" action specifies the frames/animation
+        of the unit when it does nothing, i.e. is idle.
+FrameStartWreckage=Number
+        (see above for general information)
+        Default is -1.
+FrameRangeWreckage=Number
+        (see above for general information)
+        Default is 0.
+FrameSpeedWreckage=Number
+        (see above for general information)
+        Default is 0.
+        The "Wreckage" action specifies the frames/animation
+        of the unit when it is destroyed
+-------------------------------------------------------------------------------
+
+Of course every unit may have weapons. The number of weapons must be set in the main
+group if you use them - see above for information about it.
+For every weapon, there must be a group with the name "Weapon_x" where x is the number of
+the weapon, starting with 0.
+E.g. if the unit has 3 weapons, it must have groups "Weapon_0", "Weapon_1" and "Weapon_2".
+Note that units may have only one repairing weapon. If you specify multiple
+repairing weapons, only first the one is used.
+For help on soundfiles look under [Sounds]
+-------------------------------------------------------------------------------
+[Weapon_x]
+Name=Text
+        At the moment this is only for the handbook.
+Damage=Number
+        The damage this unit makes to other units when firing.
+        Can also be negative - the unit repairs then.
+        Default is 0.
+Range=Number
+        Range of this weapon.
+        Must be >= 0. Default is 0.
+Reload=Number
+        The time to reload the weapon. "Time" means number of
+        advance calls (default is 1 per 50ms = 20 calls/sec).
+        Must be >= 0. Default is 0.
+CanShootAtAirUnits=bool
+        Can this unit shoot at aircrafts?
+        Default false.
+CanShootAtLandUnits=bool
+        Can this unit shoot at ground units? True or False.
+        Default false.
+Speed=Number
+        Speed of the shot of this weapon. If it's 0, the shot will hit the
+        target immediately (speed is infinite). Default is 0
+DamageRange=Number
+        In how big range this weapon's shot can damages other units?
+        E.g. if it's 2, all units two or less cells away from the
+        explosion will get damaged.
+        Must be >= 0. Default is 1.
+FullDamageRange=Number
+        Specifys the range where all units will be fully damaged.
+        Must not be bigger than DamageRange.
+        Default is a quarter of DamageRange.
+Height=Number
+        What's the height of missile of this weapon when it flies. If
+        you increase this, your missiles will fly with bigger arc.
+        Default is 0.25.
+Model=filename
+        Model of this weapon. If weapon's speed is 0, model
+        will never be visible, so you won't need it.
+        Default is "missile.3ds"
+HitParticles=list
+        List of ids from the particle system to create the particles
+        when the weapon hits it's target.
+        Target point is _not_ a unit, it might be any point.
+        Default is empty list.
+FlyParticles=list
+        list of ids of particle systems created when missile of
+        this weapon flies. All particle systems are also moved when
+        missile moves.
+        Default is empty list.
+ShootParticles=list
+        List of ids from the particle system to create the particles
+        when the unit is firing the weapon.
+        Default is empty list.
+SoundShoot=soundfile
+        Sound file which is played when the weapon shoots.
+        Default is shoot.
+SoundFly=soundfile
+        Sound file which is played during the weapons flies. (for missiles)
+        Not yet used.
+        Default is missile_fly.
+SoundHit=soundfile
+        Sound file which is played when the weapon hits it's target.
+        Not yet used.
+        Default is hit.
+-------------------------------------------------------------------------------
+
+
+
+Now lets get to the "misc" stuff. You can define several plugins - look into
+pluginproperties.h for a list of all possible plugins (NOT unitplugins.h!)
+
+You simply need to add the group to the file in order to make the unit support
+that plugin.
+For example if you want to to allow the unit to produce units simply add
+"[ProductionPlugin]" as a new group (without the quotation marks). For some
+plugins you also need/can provide entries inside that group. For example the
+production plugin doesn't make any sense without a list of producable units.
+I'll try to document new plugins here - but for a current list look at
+pluginproperties.h
+
+-------------------------------------------------------------------------------
+[ProductionPlugin]
+The production plugin is usually a facility-only plugin. One day we might use
+this for mobile factories, too. Note: this has never been tested, but I
+definitely want to support this!
+
+ProducerList=List
+        The List is a comma separated list of Producer IDs.
+        The facility will be able to produce all units with the
+        "Producer" entry that is listed here.
+        Default is an empty List.
+-------------------------------------------------------------------------------
+[RepairPlugin]
+(not yet supported)
+-------------------------------------------------------------------------------
+[HarvesterPlugin]
+For mineral/oil miners. Well - doesn't make any sense for facilities :-)
+
+CanMineMinerals=boolean
+        Whether this unit can mine minerals.
+        Default is false.
+CanMineOil=boolean
+        Whether this unit can mine oil.
+        Default is false.
+MaxResources=number
+        The maximal amount of resourced that can be mined until
+        the unit needs to return to a refinery.
+        Must be > 0. Default is 100.
+MiningSpeed=number
+        How fast this unit mines. This is per advance call.
+        Default is 10
+UnloadingSpeed=number
+        How fast this unit gives resources to refinery. This is per advance call.
+        Default is 10
+-------------------------------------------------------------------------------
+[Sounds]
+Sounds are stored in $KDEDIR/share/apps/boson/themes/species/${species}/sounds/
+You can add different sounds for different facility actions.
+The value for a sound effect is the filename without extension.
+
+OrderAttack=soundfile
+        When a facility gets the order to attack someone.
+        Default is order_attack.
+OrderMove=soundfile
+        When the facility gets the order to move.
+        Default is order_move.
+OrderSelect=soundfile
+        When a facility gets selected.
+        Default is order_select.
+ReportDestroyed=soundfile
+        When a facility gets destroyed.
+        Default is report_destroyed.
+ReportProduced=soundfile
+        When a facility finished producing something.
+        Default is report_produced.
+ReportUnderAttack=soundfile
+        When a facility comes under attack.
+        Default is report_underattack.
+-------------------------------------------------------------------------------
+[RefinePlugin]
+CanRefineOil=Boolean
+        True if this is an oilrefinery.
+        Default is false
+CanRefineMinerals=Boolean
+        True if this is a mineralrefinery.
+        Default is false
+-------------------------------------------------------------------------------
+
+
+
+/*
+ * vim:et
+ */

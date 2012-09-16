@@ -1,0 +1,45 @@
+[Boson Mobile Unit]
+CanGoOnLand=true
+CanGoOnWater=false
+Speed=4
+
+[Boson Unit]
+Armor=0
+ConstructedEffects=
+DestroyedEffects=1001,3001,6001,7001
+ExplodingDamage=250
+ExplodingDamageRange=2.5
+Health=150
+HitPoint=0,0,0.62
+Id=10002
+IsFacility=false
+MineralCost=350
+Name=Oil Harvester
+OilCost=250
+Producer=0
+ProductionTime=500
+Requirements=8,3
+Shield=0
+SightRange=5
+SupportMiniMap=false
+TerrainType=0
+UnitDepth=0.6
+UnitHeight=1
+UnitWidth=1
+Weapons=0
+
+[HarvesterPlugin]
+CanMineMinerals=false
+CanMineOil=true
+MaxResources=120
+MiningSpeed=2
+UnloadingSpeed=5
+
+[Sounds]
+OrderAttack=order_attack
+OrderMove=order_move
+OrderSelect=order_select
+ReportDestroyed=report_destroyed
+ReportProduced=report_produced
+ReportUnderAttack=report_underattack
+Shoot=shoot

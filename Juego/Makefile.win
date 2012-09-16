@@ -1,0 +1,336 @@
+# Project: JRV
+# Makefile created by Dev-C++ 4.9.9.2
+
+CPP  = g++.exe -D__DEBUG__
+CC   = gcc.exe -D__DEBUG__
+WINDRES = windres.exe
+RES  = 
+OBJ  = codigo/main.o codigo/gApi.o codigo/gBoton.o codigo/gEntidad2D.o codigo/gFuente.o codigo/gImagen.o codigo/gListBox.o codigo/gSprite.o codigo/gTextBox.o codigo/iApi.o codigo/iConfiguracion.o codigo/iInfoMapa.o codigo/iJuego.o codigo/iMenuConfiguracion.o codigo/iMenuMapa.o codigo/iMenuNombre.o codigo/iMenuPartida.o codigo/iMenuPrincipal.o codigo/iSoldado.o codigo/iUnidad.o codigo/iMenuUnirse.o codigo/gTerreno.o codigo/gModelo.o codigo/gBaseModelo.o codigo/gEntidad3D.o codigo/gObjeto3D.o codigo/iCamara.o codigo/iIntAcciones.o codigo/iInterfazPanel.o codigo/iIntMinimapa.o codigo/iIntSeleccion.o codigo/iIntUnidad.o codigo/iCuartelGeneral.o codigo/iUnidadSeleccionable.o codigo/iUnidadUniSeleccionable.o codigo/eExcepcion.o codigo/eExcepcionFichero.o codigo/eExcepcionLocalizada.o codigo/eExcepcionParametro.o codigo/iMenu.o codigo/gSonido.o codigo/iPozoDeExtraccion.o codigo/iCentroDeComunicaciones.o codigo/iBarracones.o codigo/iPlantaDeVehiculos.o codigo/iLaboratorio.o codigo/iAcademiaDeParacaidismo.o codigo/iHangar.o codigo/iSiloDeMisiles.o codigo/iAcademiaDeFrancotiradores.o codigo/iTorreDeVigilancia.o codigo/iIngeniero.o codigo/iArtificiero.o codigo/iMedico.o codigo/iZapador.o codigo/iJeep.o codigo/iTanque.o codigo/iArtilleriaMovil.o codigo/iSAMMovil.o codigo/iTransporteBlindado.o codigo/iHelicoptero.o codigo/iParacaidista.o codigo/iFrancotirador.o codigo/iUnidadMultiSeleccionable.o codigo/uFrecEv.o codigo/uFrecReal.o codigo/uVector2D.o codigo/uWinDefs.o codigo/lAPI.o codigo/lJugador.o codigo/lIAunidad.o codigo/lSistemaObjetivos.o codigo/lSistemaSensorial.o codigo/lCentroDeMensajes.o codigo/lUnidad.o codigo/lUnidadDinamica.o codigo/lUnidadEstatica.o codigo/lUnidadRecurso.o codigo/lUnidadSoldado.o codigo/gBarraProgreso.o codigo/iJugador.o codigo/lBarracones.o codigo/lCuartelGeneral.o codigo/uVector3D.o codigo/lSistemaMotor.o codigo/iUnidadAgresiva.o codigo/lAutomataOfensivo.o codigo/gRectangulo.o codigo/gSegmento.o codigo/gBarraVida.o codigo/iIntBarraSuperior.o codigo/gChatBox.o codigo/rApi.o codigo/rApiInterfaz.o codigo/rApiInterfazLocal.o codigo/rApiInterfazRed.o codigo/rApiLogica.o codigo/rApiLogicaLocal.o codigo/rApiLogicaRed.o codigo/iMenuConfiguracionVideo.o codigo/iPetroleo.o codigo/lPetroleo.o codigo/lPozoDeExtraccion.o $(RES)
+LINKOBJ  = codigo/main.o codigo/gApi.o codigo/gBoton.o codigo/gEntidad2D.o codigo/gFuente.o codigo/gImagen.o codigo/gListBox.o codigo/gSprite.o codigo/gTextBox.o codigo/iApi.o codigo/iConfiguracion.o codigo/iInfoMapa.o codigo/iJuego.o codigo/iMenuConfiguracion.o codigo/iMenuMapa.o codigo/iMenuNombre.o codigo/iMenuPartida.o codigo/iMenuPrincipal.o codigo/iSoldado.o codigo/iUnidad.o codigo/iMenuUnirse.o codigo/gTerreno.o codigo/gModelo.o codigo/gBaseModelo.o codigo/gEntidad3D.o codigo/gObjeto3D.o codigo/iCamara.o codigo/iIntAcciones.o codigo/iInterfazPanel.o codigo/iIntMinimapa.o codigo/iIntSeleccion.o codigo/iIntUnidad.o codigo/iCuartelGeneral.o codigo/iUnidadSeleccionable.o codigo/iUnidadUniSeleccionable.o codigo/eExcepcion.o codigo/eExcepcionFichero.o codigo/eExcepcionLocalizada.o codigo/eExcepcionParametro.o codigo/iMenu.o codigo/gSonido.o codigo/iPozoDeExtraccion.o codigo/iCentroDeComunicaciones.o codigo/iBarracones.o codigo/iPlantaDeVehiculos.o codigo/iLaboratorio.o codigo/iAcademiaDeParacaidismo.o codigo/iHangar.o codigo/iSiloDeMisiles.o codigo/iAcademiaDeFrancotiradores.o codigo/iTorreDeVigilancia.o codigo/iIngeniero.o codigo/iArtificiero.o codigo/iMedico.o codigo/iZapador.o codigo/iJeep.o codigo/iTanque.o codigo/iArtilleriaMovil.o codigo/iSAMMovil.o codigo/iTransporteBlindado.o codigo/iHelicoptero.o codigo/iParacaidista.o codigo/iFrancotirador.o codigo/iUnidadMultiSeleccionable.o codigo/uFrecEv.o codigo/uFrecReal.o codigo/uVector2D.o codigo/uWinDefs.o codigo/lAPI.o codigo/lJugador.o codigo/lIAunidad.o codigo/lSistemaObjetivos.o codigo/lSistemaSensorial.o codigo/lCentroDeMensajes.o codigo/lUnidad.o codigo/lUnidadDinamica.o codigo/lUnidadEstatica.o codigo/lUnidadRecurso.o codigo/lUnidadSoldado.o codigo/gBarraProgreso.o codigo/iJugador.o codigo/lBarracones.o codigo/lCuartelGeneral.o codigo/uVector3D.o codigo/lSistemaMotor.o codigo/iUnidadAgresiva.o codigo/lAutomataOfensivo.o codigo/gRectangulo.o codigo/gSegmento.o codigo/gBarraVida.o codigo/iIntBarraSuperior.o codigo/gChatBox.o codigo/rApi.o codigo/rApiInterfaz.o codigo/rApiInterfazLocal.o codigo/rApiInterfazRed.o codigo/rApiLogica.o codigo/rApiLogicaLocal.o codigo/rApiLogicaRed.o codigo/iMenuConfiguracionVideo.o codigo/iPetroleo.o codigo/lPetroleo.o codigo/lPozoDeExtraccion.o $(RES)
+LIBS =  -L"C:/Dev-Cpp/lib" -lagl -lalleg -luser32 -lgdi32 -lopengl32 -lglu32 -lws2_32 codigo/librerias/lib3ds/lib3ds.a  -lgmon -pg  -g3 
+INCS =  -I"C:/Dev-Cpp/include"  -I"codigo/librerias" 
+CXXINCS =  -I"C:/Dev-Cpp/lib/gcc/mingw32/3.4.2/include"  -I"C:/Dev-Cpp/include/c++/3.4.2/backward"  -I"C:/Dev-Cpp/include/c++/3.4.2/mingw32"  -I"C:/Dev-Cpp/include/c++/3.4.2"  -I"C:/Dev-Cpp/include"  -I"codigo/librerias" 
+BIN  = bin/JRV.exe
+CXXFLAGS = $(CXXINCS)   -pg -g3
+CFLAGS = $(INCS)   -pg -g3
+RM = rm -f
+
+.PHONY: all all-before all-after clean clean-custom
+
+all: all-before bin/JRV.exe all-after
+
+
+clean: clean-custom
+	${RM} $(OBJ) $(BIN)
+
+$(BIN): $(OBJ)
+	$(CPP) $(LINKOBJ) -o "bin\JRV.exe" $(LIBS)
+
+codigo/main.o: codigo/main.cpp
+	$(CPP) -c codigo/main.cpp -o codigo/main.o $(CXXFLAGS)
+
+codigo/gApi.o: codigo/gApi.cpp
+	$(CPP) -c codigo/gApi.cpp -o codigo/gApi.o $(CXXFLAGS)
+
+codigo/gBoton.o: codigo/gBoton.cpp
+	$(CPP) -c codigo/gBoton.cpp -o codigo/gBoton.o $(CXXFLAGS)
+
+codigo/gEntidad2D.o: codigo/gEntidad2D.cpp
+	$(CPP) -c codigo/gEntidad2D.cpp -o codigo/gEntidad2D.o $(CXXFLAGS)
+
+codigo/gFuente.o: codigo/gFuente.cpp
+	$(CPP) -c codigo/gFuente.cpp -o codigo/gFuente.o $(CXXFLAGS)
+
+codigo/gImagen.o: codigo/gImagen.cpp
+	$(CPP) -c codigo/gImagen.cpp -o codigo/gImagen.o $(CXXFLAGS)
+
+codigo/gListBox.o: codigo/gListBox.cpp
+	$(CPP) -c codigo/gListBox.cpp -o codigo/gListBox.o $(CXXFLAGS)
+
+codigo/gSprite.o: codigo/gSprite.cpp
+	$(CPP) -c codigo/gSprite.cpp -o codigo/gSprite.o $(CXXFLAGS)
+
+codigo/gTextBox.o: codigo/gTextBox.cpp
+	$(CPP) -c codigo/gTextBox.cpp -o codigo/gTextBox.o $(CXXFLAGS)
+
+codigo/iApi.o: codigo/iApi.cpp
+	$(CPP) -c codigo/iApi.cpp -o codigo/iApi.o $(CXXFLAGS)
+
+codigo/iConfiguracion.o: codigo/iConfiguracion.cpp
+	$(CPP) -c codigo/iConfiguracion.cpp -o codigo/iConfiguracion.o $(CXXFLAGS)
+
+codigo/iInfoMapa.o: codigo/iInfoMapa.cpp
+	$(CPP) -c codigo/iInfoMapa.cpp -o codigo/iInfoMapa.o $(CXXFLAGS)
+
+codigo/iJuego.o: codigo/iJuego.cpp
+	$(CPP) -c codigo/iJuego.cpp -o codigo/iJuego.o $(CXXFLAGS)
+
+codigo/iMenuConfiguracion.o: codigo/iMenuConfiguracion.cpp
+	$(CPP) -c codigo/iMenuConfiguracion.cpp -o codigo/iMenuConfiguracion.o $(CXXFLAGS)
+
+codigo/iMenuMapa.o: codigo/iMenuMapa.cpp
+	$(CPP) -c codigo/iMenuMapa.cpp -o codigo/iMenuMapa.o $(CXXFLAGS)
+
+codigo/iMenuNombre.o: codigo/iMenuNombre.cpp
+	$(CPP) -c codigo/iMenuNombre.cpp -o codigo/iMenuNombre.o $(CXXFLAGS)
+
+codigo/iMenuPartida.o: codigo/iMenuPartida.cpp
+	$(CPP) -c codigo/iMenuPartida.cpp -o codigo/iMenuPartida.o $(CXXFLAGS)
+
+codigo/iMenuPrincipal.o: codigo/iMenuPrincipal.cpp
+	$(CPP) -c codigo/iMenuPrincipal.cpp -o codigo/iMenuPrincipal.o $(CXXFLAGS)
+
+codigo/iSoldado.o: codigo/iSoldado.cpp
+	$(CPP) -c codigo/iSoldado.cpp -o codigo/iSoldado.o $(CXXFLAGS)
+
+codigo/iUnidad.o: codigo/iUnidad.cpp
+	$(CPP) -c codigo/iUnidad.cpp -o codigo/iUnidad.o $(CXXFLAGS)
+
+codigo/iMenuUnirse.o: codigo/iMenuUnirse.cpp
+	$(CPP) -c codigo/iMenuUnirse.cpp -o codigo/iMenuUnirse.o $(CXXFLAGS)
+
+codigo/gTerreno.o: codigo/gTerreno.cpp
+	$(CPP) -c codigo/gTerreno.cpp -o codigo/gTerreno.o $(CXXFLAGS)
+
+codigo/gModelo.o: codigo/gModelo.cpp
+	$(CPP) -c codigo/gModelo.cpp -o codigo/gModelo.o $(CXXFLAGS)
+
+codigo/gBaseModelo.o: codigo/gBaseModelo.cpp
+	$(CPP) -c codigo/gBaseModelo.cpp -o codigo/gBaseModelo.o $(CXXFLAGS)
+
+codigo/gEntidad3D.o: codigo/gEntidad3D.cpp
+	$(CPP) -c codigo/gEntidad3D.cpp -o codigo/gEntidad3D.o $(CXXFLAGS)
+
+codigo/gObjeto3D.o: codigo/gObjeto3D.cpp
+	$(CPP) -c codigo/gObjeto3D.cpp -o codigo/gObjeto3D.o $(CXXFLAGS)
+
+codigo/iCamara.o: codigo/iCamara.cpp
+	$(CPP) -c codigo/iCamara.cpp -o codigo/iCamara.o $(CXXFLAGS)
+
+codigo/iIntAcciones.o: codigo/iIntAcciones.cpp
+	$(CPP) -c codigo/iIntAcciones.cpp -o codigo/iIntAcciones.o $(CXXFLAGS)
+
+codigo/iInterfazPanel.o: codigo/iInterfazPanel.cpp
+	$(CPP) -c codigo/iInterfazPanel.cpp -o codigo/iInterfazPanel.o $(CXXFLAGS)
+
+codigo/iIntMinimapa.o: codigo/iIntMinimapa.cpp
+	$(CPP) -c codigo/iIntMinimapa.cpp -o codigo/iIntMinimapa.o $(CXXFLAGS)
+
+codigo/iIntSeleccion.o: codigo/iIntSeleccion.cpp
+	$(CPP) -c codigo/iIntSeleccion.cpp -o codigo/iIntSeleccion.o $(CXXFLAGS)
+
+codigo/iIntUnidad.o: codigo/iIntUnidad.cpp
+	$(CPP) -c codigo/iIntUnidad.cpp -o codigo/iIntUnidad.o $(CXXFLAGS)
+
+codigo/iCuartelGeneral.o: codigo/iCuartelGeneral.cpp
+	$(CPP) -c codigo/iCuartelGeneral.cpp -o codigo/iCuartelGeneral.o $(CXXFLAGS)
+
+codigo/iUnidadSeleccionable.o: codigo/iUnidadSeleccionable.cpp
+	$(CPP) -c codigo/iUnidadSeleccionable.cpp -o codigo/iUnidadSeleccionable.o $(CXXFLAGS)
+
+codigo/iUnidadUniSeleccionable.o: codigo/iUnidadUniSeleccionable.cpp
+	$(CPP) -c codigo/iUnidadUniSeleccionable.cpp -o codigo/iUnidadUniSeleccionable.o $(CXXFLAGS)
+
+codigo/eExcepcion.o: codigo/eExcepcion.cpp
+	$(CPP) -c codigo/eExcepcion.cpp -o codigo/eExcepcion.o $(CXXFLAGS)
+
+codigo/eExcepcionFichero.o: codigo/eExcepcionFichero.cpp
+	$(CPP) -c codigo/eExcepcionFichero.cpp -o codigo/eExcepcionFichero.o $(CXXFLAGS)
+
+codigo/eExcepcionLocalizada.o: codigo/eExcepcionLocalizada.cpp
+	$(CPP) -c codigo/eExcepcionLocalizada.cpp -o codigo/eExcepcionLocalizada.o $(CXXFLAGS)
+
+codigo/eExcepcionParametro.o: codigo/eExcepcionParametro.cpp
+	$(CPP) -c codigo/eExcepcionParametro.cpp -o codigo/eExcepcionParametro.o $(CXXFLAGS)
+
+codigo/iMenu.o: codigo/iMenu.cpp
+	$(CPP) -c codigo/iMenu.cpp -o codigo/iMenu.o $(CXXFLAGS)
+
+codigo/gSonido.o: codigo/gSonido.cpp
+	$(CPP) -c codigo/gSonido.cpp -o codigo/gSonido.o $(CXXFLAGS)
+
+codigo/iPozoDeExtraccion.o: codigo/iPozoDeExtraccion.cpp
+	$(CPP) -c codigo/iPozoDeExtraccion.cpp -o codigo/iPozoDeExtraccion.o $(CXXFLAGS)
+
+codigo/iCentroDeComunicaciones.o: codigo/iCentroDeComunicaciones.cpp
+	$(CPP) -c codigo/iCentroDeComunicaciones.cpp -o codigo/iCentroDeComunicaciones.o $(CXXFLAGS)
+
+codigo/iBarracones.o: codigo/iBarracones.cpp
+	$(CPP) -c codigo/iBarracones.cpp -o codigo/iBarracones.o $(CXXFLAGS)
+
+codigo/iPlantaDeVehiculos.o: codigo/iPlantaDeVehiculos.cpp
+	$(CPP) -c codigo/iPlantaDeVehiculos.cpp -o codigo/iPlantaDeVehiculos.o $(CXXFLAGS)
+
+codigo/iLaboratorio.o: codigo/iLaboratorio.cpp
+	$(CPP) -c codigo/iLaboratorio.cpp -o codigo/iLaboratorio.o $(CXXFLAGS)
+
+codigo/iAcademiaDeParacaidismo.o: codigo/iAcademiaDeParacaidismo.cpp
+	$(CPP) -c codigo/iAcademiaDeParacaidismo.cpp -o codigo/iAcademiaDeParacaidismo.o $(CXXFLAGS)
+
+codigo/iHangar.o: codigo/iHangar.cpp
+	$(CPP) -c codigo/iHangar.cpp -o codigo/iHangar.o $(CXXFLAGS)
+
+codigo/iSiloDeMisiles.o: codigo/iSiloDeMisiles.cpp
+	$(CPP) -c codigo/iSiloDeMisiles.cpp -o codigo/iSiloDeMisiles.o $(CXXFLAGS)
+
+codigo/iAcademiaDeFrancotiradores.o: codigo/iAcademiaDeFrancotiradores.cpp
+	$(CPP) -c codigo/iAcademiaDeFrancotiradores.cpp -o codigo/iAcademiaDeFrancotiradores.o $(CXXFLAGS)
+
+codigo/iTorreDeVigilancia.o: codigo/iTorreDeVigilancia.cpp
+	$(CPP) -c codigo/iTorreDeVigilancia.cpp -o codigo/iTorreDeVigilancia.o $(CXXFLAGS)
+
+codigo/iIngeniero.o: codigo/iIngeniero.cpp
+	$(CPP) -c codigo/iIngeniero.cpp -o codigo/iIngeniero.o $(CXXFLAGS)
+
+codigo/iArtificiero.o: codigo/iArtificiero.cpp
+	$(CPP) -c codigo/iArtificiero.cpp -o codigo/iArtificiero.o $(CXXFLAGS)
+
+codigo/iMedico.o: codigo/iMedico.cpp
+	$(CPP) -c codigo/iMedico.cpp -o codigo/iMedico.o $(CXXFLAGS)
+
+codigo/iZapador.o: codigo/iZapador.cpp
+	$(CPP) -c codigo/iZapador.cpp -o codigo/iZapador.o $(CXXFLAGS)
+
+codigo/iJeep.o: codigo/iJeep.cpp
+	$(CPP) -c codigo/iJeep.cpp -o codigo/iJeep.o $(CXXFLAGS)
+
+codigo/iTanque.o: codigo/iTanque.cpp
+	$(CPP) -c codigo/iTanque.cpp -o codigo/iTanque.o $(CXXFLAGS)
+
+codigo/iArtilleriaMovil.o: codigo/iArtilleriaMovil.cpp
+	$(CPP) -c codigo/iArtilleriaMovil.cpp -o codigo/iArtilleriaMovil.o $(CXXFLAGS)
+
+codigo/iSAMMovil.o: codigo/iSAMMovil.cpp
+	$(CPP) -c codigo/iSAMMovil.cpp -o codigo/iSAMMovil.o $(CXXFLAGS)
+
+codigo/iTransporteBlindado.o: codigo/iTransporteBlindado.cpp
+	$(CPP) -c codigo/iTransporteBlindado.cpp -o codigo/iTransporteBlindado.o $(CXXFLAGS)
+
+codigo/iHelicoptero.o: codigo/iHelicoptero.cpp
+	$(CPP) -c codigo/iHelicoptero.cpp -o codigo/iHelicoptero.o $(CXXFLAGS)
+
+codigo/iParacaidista.o: codigo/iParacaidista.cpp
+	$(CPP) -c codigo/iParacaidista.cpp -o codigo/iParacaidista.o $(CXXFLAGS)
+
+codigo/iFrancotirador.o: codigo/iFrancotirador.cpp
+	$(CPP) -c codigo/iFrancotirador.cpp -o codigo/iFrancotirador.o $(CXXFLAGS)
+
+codigo/iUnidadMultiSeleccionable.o: codigo/iUnidadMultiSeleccionable.cpp
+	$(CPP) -c codigo/iUnidadMultiSeleccionable.cpp -o codigo/iUnidadMultiSeleccionable.o $(CXXFLAGS)
+
+codigo/uFrecEv.o: codigo/uFrecEv.cpp
+	$(CPP) -c codigo/uFrecEv.cpp -o codigo/uFrecEv.o $(CXXFLAGS)
+
+codigo/uFrecReal.o: codigo/uFrecReal.cpp
+	$(CPP) -c codigo/uFrecReal.cpp -o codigo/uFrecReal.o $(CXXFLAGS)
+
+codigo/uVector2D.o: codigo/uVector2D.cpp
+	$(CPP) -c codigo/uVector2D.cpp -o codigo/uVector2D.o $(CXXFLAGS)
+
+codigo/uWinDefs.o: codigo/uWinDefs.cpp
+	$(CPP) -c codigo/uWinDefs.cpp -o codigo/uWinDefs.o $(CXXFLAGS)
+
+codigo/lAPI.o: codigo/lAPI.cpp
+	$(CPP) -c codigo/lAPI.cpp -o codigo/lAPI.o $(CXXFLAGS)
+
+codigo/lJugador.o: codigo/lJugador.cpp
+	$(CPP) -c codigo/lJugador.cpp -o codigo/lJugador.o $(CXXFLAGS)
+
+codigo/lIAunidad.o: codigo/lIAunidad.cpp
+	$(CPP) -c codigo/lIAunidad.cpp -o codigo/lIAunidad.o $(CXXFLAGS)
+
+codigo/lSistemaObjetivos.o: codigo/lSistemaObjetivos.cpp
+	$(CPP) -c codigo/lSistemaObjetivos.cpp -o codigo/lSistemaObjetivos.o $(CXXFLAGS)
+
+codigo/lSistemaSensorial.o: codigo/lSistemaSensorial.cpp
+	$(CPP) -c codigo/lSistemaSensorial.cpp -o codigo/lSistemaSensorial.o $(CXXFLAGS)
+
+codigo/lCentroDeMensajes.o: codigo/lCentroDeMensajes.cpp
+	$(CPP) -c codigo/lCentroDeMensajes.cpp -o codigo/lCentroDeMensajes.o $(CXXFLAGS)
+
+codigo/lUnidad.o: codigo/lUnidad.cpp
+	$(CPP) -c codigo/lUnidad.cpp -o codigo/lUnidad.o $(CXXFLAGS)
+
+codigo/lUnidadDinamica.o: codigo/lUnidadDinamica.cpp
+	$(CPP) -c codigo/lUnidadDinamica.cpp -o codigo/lUnidadDinamica.o $(CXXFLAGS)
+
+codigo/lUnidadEstatica.o: codigo/lUnidadEstatica.cpp
+	$(CPP) -c codigo/lUnidadEstatica.cpp -o codigo/lUnidadEstatica.o $(CXXFLAGS)
+
+codigo/lUnidadRecurso.o: codigo/lUnidadRecurso.cpp
+	$(CPP) -c codigo/lUnidadRecurso.cpp -o codigo/lUnidadRecurso.o $(CXXFLAGS)
+
+codigo/lUnidadSoldado.o: codigo/lUnidadSoldado.cpp
+	$(CPP) -c codigo/lUnidadSoldado.cpp -o codigo/lUnidadSoldado.o $(CXXFLAGS)
+
+codigo/gBarraProgreso.o: codigo/gBarraProgreso.cpp
+	$(CPP) -c codigo/gBarraProgreso.cpp -o codigo/gBarraProgreso.o $(CXXFLAGS)
+
+codigo/iJugador.o: codigo/iJugador.cpp
+	$(CPP) -c codigo/iJugador.cpp -o codigo/iJugador.o $(CXXFLAGS)
+
+codigo/lBarracones.o: codigo/lBarracones.cpp
+	$(CPP) -c codigo/lBarracones.cpp -o codigo/lBarracones.o $(CXXFLAGS)
+
+codigo/lCuartelGeneral.o: codigo/lCuartelGeneral.cpp
+	$(CPP) -c codigo/lCuartelGeneral.cpp -o codigo/lCuartelGeneral.o $(CXXFLAGS)
+
+codigo/uVector3D.o: codigo/uVector3D.cpp
+	$(CPP) -c codigo/uVector3D.cpp -o codigo/uVector3D.o $(CXXFLAGS)
+
+codigo/lSistemaMotor.o: codigo/lSistemaMotor.cpp
+	$(CPP) -c codigo/lSistemaMotor.cpp -o codigo/lSistemaMotor.o $(CXXFLAGS)
+
+codigo/iUnidadAgresiva.o: codigo/iUnidadAgresiva.cpp
+	$(CPP) -c codigo/iUnidadAgresiva.cpp -o codigo/iUnidadAgresiva.o $(CXXFLAGS)
+
+codigo/lAutomataOfensivo.o: codigo/lAutomataOfensivo.cpp
+	$(CPP) -c codigo/lAutomataOfensivo.cpp -o codigo/lAutomataOfensivo.o $(CXXFLAGS)
+
+codigo/gRectangulo.o: codigo/gRectangulo.cpp
+	$(CPP) -c codigo/gRectangulo.cpp -o codigo/gRectangulo.o $(CXXFLAGS)
+
+codigo/gSegmento.o: codigo/gSegmento.cpp
+	$(CPP) -c codigo/gSegmento.cpp -o codigo/gSegmento.o $(CXXFLAGS)
+
+codigo/gBarraVida.o: codigo/gBarraVida.cpp
+	$(CPP) -c codigo/gBarraVida.cpp -o codigo/gBarraVida.o $(CXXFLAGS)
+
+codigo/iIntBarraSuperior.o: codigo/iIntBarraSuperior.cpp
+	$(CPP) -c codigo/iIntBarraSuperior.cpp -o codigo/iIntBarraSuperior.o $(CXXFLAGS)
+
+codigo/gChatBox.o: codigo/gChatBox.cpp
+	$(CPP) -c codigo/gChatBox.cpp -o codigo/gChatBox.o $(CXXFLAGS)
+
+codigo/rApi.o: codigo/rApi.cpp
+	$(CPP) -c codigo/rApi.cpp -o codigo/rApi.o $(CXXFLAGS)
+
+codigo/rApiInterfaz.o: codigo/rApiInterfaz.cpp
+	$(CPP) -c codigo/rApiInterfaz.cpp -o codigo/rApiInterfaz.o $(CXXFLAGS)
+
+codigo/rApiInterfazLocal.o: codigo/rApiInterfazLocal.cpp
+	$(CPP) -c codigo/rApiInterfazLocal.cpp -o codigo/rApiInterfazLocal.o $(CXXFLAGS)
+
+codigo/rApiInterfazRed.o: codigo/rApiInterfazRed.cpp
+	$(CPP) -c codigo/rApiInterfazRed.cpp -o codigo/rApiInterfazRed.o $(CXXFLAGS)
+
+codigo/rApiLogica.o: codigo/rApiLogica.cpp
+	$(CPP) -c codigo/rApiLogica.cpp -o codigo/rApiLogica.o $(CXXFLAGS)
+
+codigo/rApiLogicaLocal.o: codigo/rApiLogicaLocal.cpp
+	$(CPP) -c codigo/rApiLogicaLocal.cpp -o codigo/rApiLogicaLocal.o $(CXXFLAGS)
+
+codigo/rApiLogicaRed.o: codigo/rApiLogicaRed.cpp
+	$(CPP) -c codigo/rApiLogicaRed.cpp -o codigo/rApiLogicaRed.o $(CXXFLAGS)
+
+codigo/iMenuConfiguracionVideo.o: codigo/iMenuConfiguracionVideo.cpp
+	$(CPP) -c codigo/iMenuConfiguracionVideo.cpp -o codigo/iMenuConfiguracionVideo.o $(CXXFLAGS)
+
+codigo/iPetroleo.o: codigo/iPetroleo.cpp
+	$(CPP) -c codigo/iPetroleo.cpp -o codigo/iPetroleo.o $(CXXFLAGS)
+
+codigo/lPetroleo.o: codigo/lPetroleo.cpp
+	$(CPP) -c codigo/lPetroleo.cpp -o codigo/lPetroleo.o $(CXXFLAGS)
+
+codigo/lPozoDeExtraccion.o: codigo/lPozoDeExtraccion.cpp
+	$(CPP) -c codigo/lPozoDeExtraccion.cpp -o codigo/lPozoDeExtraccion.o $(CXXFLAGS)
